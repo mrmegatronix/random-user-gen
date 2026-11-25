@@ -19,23 +19,28 @@
   tickClock();
   setInterval(tickClock, 500);
 
-  async function generate() {
+  function generate() {
     btnGen.disabled = true;
-    try {
-      const res = await fetch('https://randomuser.me/api/?inc=login,name', { cache: 'no-store' });
-      const { results } = await res.json();
-      const u = results[0];
-      current = u.login.username;
-      elUser.textContent = current;
-      elSub.textContent = `${u.name.first} ${u.name.last}`;
-      if (window.MatrixAutoFit) {
-        window.MatrixAutoFit.fitElement(elUser, { maxRem: 5.5, minRem: 2.0, widthRatio: 0.94 });
+    $.ajax({
+      url: 'https://randomuser.me/api/?inc=login,name',
+      dataType: 'json',
+      cache: false,
+      success: function(data) {
+        const u = data.results[0];
+        current = u.login.username;
+        elUser.textContent = current;
+        elSub.textContent = `${u.name.first} ${u.name.last}`;
+        if (window.MatrixAutoFit) {
+          window.MatrixAutoFit.fitElement(elUser, { maxRem: 5.5, minRem: 2.0, widthRatio: 0.94 });
+        }
+      },
+      error: function() {
+        elUser.textContent = 'error — retry';
+      },
+      complete: function() {
+        btnGen.disabled = false;
       }
-    } catch {
-      elUser.textContent = 'error — retry';
-    } finally {
-      btnGen.disabled = false;
-    }
+    });
   }
 
   async function copy() {
