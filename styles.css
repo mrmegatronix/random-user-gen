@@ -1,0 +1,139 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #090d16;
+  color: #f8fafc;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.stage {
+  width: 100vw;
+  height: 100vh;
+  padding: 36px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+.clock {
+  font-size: 2.6rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.colon {
+  color: #38bdf8;
+  animation: blink 1s steps(1, end) infinite;
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0.1; }
+}
+
+.center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  min-width: 0;
+}
+
+.username-box {
+  width: 100%;
+  max-width: 1500px;
+  padding: 56px 64px;
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 28px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.username {
+  font-size: 5.5rem;
+  font-weight: 900;
+  color: #38bdf8;
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.subname {
+  margin-top: 18px;
+  font-size: 1.9rem;
+  font-weight: 500;
+  color: #94a3b8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.actions {
+  display: flex;
+  gap: 24px;
+}
+
+.btn {
+  padding: 20px 48px;
+  border-radius: 14px;
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: #f8fafc;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn.primary {
+  background: #38bdf8;
+  border-color: #38bdf8;
+  color: #090d16;
+}
+
+.btn:hover {
+  filter: brightness(1.1);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #64748b;
+  white-space: nowrap;
+}
